@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="java.util.*,bean.*,java.util.Date,java.text.SimpleDateFormat,java.text.DateFormat"%>
-	
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.*,bean.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,19 +28,14 @@
          
 /*             text-align: center; */
 /*         } */
-        
-        
-    
+               
     </style>
-
-
 
 </head>
 <body>
 
 	<jsp:include page="header.jsp" />
 	<!-- 選項與CRUD按鈕 -->
-	<c:if test="${sessionScope.user == null}"><% request.getRequestDispatcher("/Login.jsp").forward(request, response); %></c:if>
 <div class="divform">
 	<form action="ExamController" method="post">
 		<div>
@@ -88,16 +80,16 @@
 			</thead>
 
 		<%
-    List<ExamBean> examTable = (List<ExamBean>) session.getAttribute("examTable");
-    if (examTable != null && examTable.size() > 0) {
-    for (int i = 0; i < examTable.size(); i++) {
-    	
-    	
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
-		Date date = new Date();        
-		String dateToStr = dateFormat.format(examTable.get(i).getDate());
-		
-    %>
+	    List<ExamBean> examTable = (List<ExamBean>) session.getAttribute("examTable");
+	    if (examTable != null && examTable.size() > 0) {
+	    for (int i = 0; i < examTable.size(); i++) {
+	    	
+	    	
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = new Date();        
+			String dateToStr = dateFormat.format(examTable.get(i).getExamdate());
+			
+	    %>
 		<tbody>
 			<tr>
 				<%--                 <td><input type="checkbox" name="examTableIndex" value="<%= i %>"></td> --%>
@@ -106,17 +98,18 @@
 				<td><%= examTable.get(i).getSubject() %></td>
 				<td><%= examTable.get(i).getEducation() %></td>
 				<td><%= examTable.get(i).getExamName() %></td>
-				<td><%= examTable.get(i).getDate()%></td>
+				<td><%= examTable.get(i).getExamdate() %></td>
 				<form action="ExamController" method="post">
 					<input type="hidden" name="examID" value="<%= examTable.get(i).getExamID() %>"> 
 					<input type="hidden" name="subject" value="<%= examTable.get(i).getSubject() %>">
 					<input type="hidden" name="education" value="<%= examTable.get(i).getEducation() %>"> 
 					<input type="hidden" name="examName" value="<%= examTable.get(i).getExamName()%>"> 
-					<input type="hidden" name="examDate" value="<%= examTable.get(i).getDate()%>">
-					<td><input type="submit" name="todo" value="remove" onclick="if( !(confirm('確認刪除?') ) ) return false"></td>
+					<input type="hidden" name="examDate" value="<%= examTable.get(i).getExamdate()%>">
+					<td><input type="submit" name="todo" value="delete" onclick="if( !(confirm('確認刪除?') ) ) return false"></td>
 				</form>
 				<!-- <td><input type="submit" name="todo" value="update"> </td> -->
 				<td><a href="ExamUpdate.jsp?UpIndex=<%= i %>&examID=<%= examTable.get(i).getExamID() %>"><button type="button" value="Update">Update</button></a></td>
+				<td><input type="submit" name="todo" value="test"></td>			
 			</tr>
 		</tbody>
 

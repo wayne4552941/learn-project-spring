@@ -5,7 +5,7 @@
 document.getElementById("name").addEventListener('blur', function () {
 
     if (!nameDatacheck()) {
-        document.getElementById('spExamName').innerHTML = "卷名不能為空"
+        document.getElementById('spExamName').innerHTML = "姓名不能為空"
     } else {
         document.getElementById('spExamName').innerHTML = ""
     }

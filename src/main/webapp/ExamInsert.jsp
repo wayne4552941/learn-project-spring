@@ -26,7 +26,6 @@
     	
     	
     </style>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 </head>
 <body>
     <jsp:include page="header.jsp" />
@@ -69,11 +68,11 @@
                         <input type="submit" name="todo" value="insert" onclick="if( !(confirm('確認新增?') ) ) return false">
                     </center>
                 </td>
-                <%if (warn != null) { %> 
+               <%if (warn != null) { %> 
                 <td>
                 	<%=warn%>
                 </td>
-                <%}%>	
+                <%}%>
             </tr>
         </table>
     </form>

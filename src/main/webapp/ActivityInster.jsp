@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="BIG5">
-<title>Insert title here</title>
+<title>新增活動</title>
 <link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 	<link rel="stylesheet" href="css/activityCSS.css">
 
@@ -95,7 +95,6 @@ margin:0px auto;
 				<div >
 					<h3>圖片:</h3>
 					<input class="data" name="activity_imgPath" type="text" value="${activityBean.imgPath}" />
-					<input class="data" name="activity_id" type="text" value="${activityBean.id}" />
 					<img class="activity_img" id="activity_img"  src="${activityBean.imgPath}" alt="">
 					<br>
 					<label class="uploadImgButton" for="uploadPhotos">上傳照片</label>

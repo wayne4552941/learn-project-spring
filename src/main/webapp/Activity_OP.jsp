@@ -9,7 +9,7 @@
 <title>活動(管理員)</title>
 <!--css導入-->
 <link rel="stylesheet" href="css/activityCSS.css">
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
+
 <Style>
 #box {
 	position: relative;

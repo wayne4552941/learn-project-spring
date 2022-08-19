@@ -1,0 +1,31 @@
+@charset "UTF-8";
+figure {
+  margin-bottom: 50px;
+  text-align: center; }
+  
+ .register-form {
+  width: 100%; }
+ .signin1 {
+  padding-top: 67px;
+  padding-bottom: 87px; }
+h2 {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #2f2f2f;
+  font-family: Poppins;
+  font-size: 36px; }
+  
+ .group{
+autocomplete:"off" }
+
+ .main{
+  margin:80px 200px 0px 200px;
+  background: #f8f8f8;
+  padding: 50px 0; }
+  
+  .group {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden; }

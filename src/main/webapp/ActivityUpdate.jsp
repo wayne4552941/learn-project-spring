@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="BIG5">
-<title>Insert title here</title>
+<title>更新活動</title>
 <link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 	<link rel="stylesheet" href="css/activityCSS.css">
 

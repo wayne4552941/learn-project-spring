@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>活動</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
+
 <!--css導入-->
 <link rel="stylesheet" href="css/activityCSS.css">
 <Style>
@@ -37,6 +37,7 @@
 .select{	
 	float: right;
 	display: flex;
+	
 }
 
 .selectInput{
@@ -48,13 +49,19 @@
 <body>
 	<jsp:include page="header.jsp"/>
 	<div id="box">
-	
+
+		
+		
 		<form class="select" action="Activity" >
             <input class="selectInput" type="month" name="select" />
             <button type="submit" name="request" value="查詢">查詢</button>
      		</form>
-		<h2>活動編輯</h2>
-		<p>
+		<h2>活動</h2>
+		
+		
+        <p>
+        
+		
 		
 		<div>
 			<%
@@ -66,13 +73,13 @@
 			<form class="activity_form" >
 			<div class="preview">
 				<div class="img_parent">
-					<input class="data" name="activity_imgPath" type="text" value="<%=activity.getImgPath()%>" />
-					<input class="data" name="activity_id" type="text" value="<%=activity.getId()%>" />
+					<input class="data" name="activity_imgPath" type="text" value="<%=activity.getImgPath()%>" readonly />
+					<input class="data" name="activity_id" type="text" value="<%=activity.getId()%> " readonly/>
 					<img class="activity_img" id="activity_img"  src="<%=activity.getImgPath()%>" alt="">
 				</div>
 				<div class="activity_text">
 					<input class="title" name="activity_title" type="text" value="<%=activity.getTitle()%>" readonly>
-					<textarea class="introduction" name="activity_content" cols="30" required><%=activity.getContent()%></textarea>
+					<textarea class="introduction" name="activity_content" cols="30" readonly><%=activity.getContent()%></textarea>
 					
 				</div>
 				

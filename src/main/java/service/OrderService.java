@@ -115,8 +115,8 @@ public class OrderService {
 		} else {
 			String txt = "<h2>"+"訂單編號: " + orderUser.getOrder_id() + "<br>"
 					+"訂單生成日期: " +orderUser.getDate() + "<br>"
-					+"購買人姓名: " + orderUser.getName() + "<br>"
-					+"購買人信箱" + orderUser.getEmail() + "<br>"
+					+"購買人姓名: " + orderUser.getMemberBean().getName() + "<br>"
+					+"購買人信箱: " + orderUser.getMemberBean().getEmail() + "<br>"
 					+"總金額: " + orderUser.getTotoalprice()+"<h2>";
 			JavaMail javaMail = new JavaMail();
 			javaMail.setCustomer("ggyy45529441@gmail.com");

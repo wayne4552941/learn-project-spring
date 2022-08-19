@@ -27,7 +27,6 @@
             color: red;
         }
     </style>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 </head>
 <body>
 	<jsp:include page="header.jsp" />
@@ -35,7 +34,6 @@
 	List<ExamBean> examTable = (List<ExamBean>) session.getAttribute("examTable");
 	String warn =(String) request.getAttribute("warn");
 	%>
-	
 	<div class="divform">
     <form action="ExamController" method="post" onsubmit="return check()">
     
@@ -76,7 +74,7 @@
                     <input type="text" name="examDate" id="examDate"  maxlength="15">
                 </td>
                 <td>
-                	${examTable[param.UpIndex].date}
+                	${examTable[param.UpIndex].examdate}
                 	<span class="alert" id="spExamDate"></span>
                 </td>
             </tr>

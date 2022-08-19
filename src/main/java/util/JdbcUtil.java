@@ -1,5 +1,6 @@
 package util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,9 +25,12 @@ public class JdbcUtil {
 	
 	static {
 		try {
+		
 			//InputStream is = JdbcUtil.class.getClassLoader().getSystemResourceAsStream("druid.properties");   //ClassLoader.getSystemResourceAsStream("druid.properties");
 			FileInputStream in = new FileInputStream("C:\\Users\\ASUS\\Desktop\\WayneCode\\JAVA\\JAVAworkspace\\learn-project\\druid.properties");
+//			FileInputStream in = new FileInputStream("D:/github/learn-project/src/main/java/druid.properties");
 			//FileInputStream in = new FileInputStream("druid.properties");
+			
 			Properties p = new Properties();
 			p.load(in);
 		

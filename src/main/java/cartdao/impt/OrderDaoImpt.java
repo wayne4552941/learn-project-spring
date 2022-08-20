@@ -144,7 +144,7 @@ public class OrderDaoImpt extends BaseDAO<OrderUser> implements OrderDAO {
 			for (String o : resultList) {
 				List<Integer> orderItemIDList = daoImpt.orderItemIDList(o);
 				for (Integer item : orderItemIDList) {
-					CourseBean course = dao.selectById(item);
+					CourseBean course = dao.select(item);
 					courses.add(course);
 				}
 			}

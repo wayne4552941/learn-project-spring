@@ -38,17 +38,16 @@
 </style>
 <script type="text/javascript" src="jquery-3.6.0.js"></script>
 <script>
-function myFunction(){
-	$.getJSON("CartServlet",
-			"command=COUNT", function(data) {
-				$("#msg").html(data[1]);
-			});
-}
-	
+	function myFunction() {
+		$.getJSON("CartServlet", "command=COUNT", function(data) {
+			$("#msg").html(data[1]);
+		});
+	}
 </script>
 <title>Header</title>
 </head>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="assets/images/smalllogo.png" />
 <body onload="myFunction()" class="home">
 
 	<header class="header style7">
@@ -108,11 +107,11 @@ function myFunction(){
 						<div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
 							<div class="header-control">
 								<div class="block-minicart teamo-mini-cart block-header ">
-									<c:if test="${sessionScope.user.status != 3}">
-										<a href="CartServlet" class="shopcart-icon"
-											data-teamo="teamo-dropdown">Cart <span class="count"
-											id="msg"></span></a>
-									</c:if>
+
+									<a href="CartServlet" class="shopcart-icon"
+										data-teamo="teamo-dropdown">Cart <span class="count"
+										id="msg"></span></a>
+
 									<div class="shopcart-description teamo-submenu">
 										<div class="content-wrap"></div>
 									</div>
@@ -131,7 +130,7 @@ function myFunction(){
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="header-nav-container rows-space-20">
 				<div class="container">
 					<div class="header-nav-wapper main-menu-wapper">
@@ -150,8 +149,8 @@ function myFunction(){
 												class="teamo-menu-item-title" title="New Arrivals">我的學習</a></li>
 											<li class="menu-item"><a title="Hot Sale" href="#"
 												class="teamo-menu-item-title">我的試卷</a></li>
-											<li class="menu-item "><a title="Accessories" href="Activity"
-												class="teamo-menu-item-title">我的活動</a><span
+											<li class="menu-item "><a title="Accessories"
+												href="Activity" class="teamo-menu-item-title">我的活動</a><span
 												class="toggle-submenu"></span></li>
 											<li class="menu-item"><a title="Variegated"
 												href="CartServlet" class="teamo-menu-item-title">我的購物車</a></li>
@@ -166,17 +165,18 @@ function myFunction(){
 										<ul
 											class="teamo-nav-vertical vertical-menu teamo-clone-mobile-menu">
 
-											<li class="menu-item"><a title="Hot Sale" href="AdminServlet?action=list"
+											<li class="menu-item"><a title="Hot Sale"
+												href="AdminServlet?action=list"
 												class="teamo-menu-item-title">會員管理</a></li>
-											<li class="menu-item"><a title="Hot Sale" href="Exam.jsp"
-												class="teamo-menu-item-title">試卷管理</a></li>
-											<li class="menu-item"><a title="Hot Sale" href="CourseServlet1"
-												class="teamo-menu-item-title">課程管理</a></li>
-											<li class="menu-item "><a title="Accessories" href="Activity_OP"
-												class="teamo-menu-item-title">活動管理</a><span
+											<li class="menu-item"><a title="Hot Sale"
+												href="Exam.jsp" class="teamo-menu-item-title">試卷管理</a></li>
+											<li class="menu-item"><a title="Hot Sale"
+												href="CourseServlet" class="teamo-menu-item-title">課程管理</a></li>
+											<li class="menu-item "><a title="Accessories"
+												href="Activity_OP" class="teamo-menu-item-title">活動管理</a><span
 												class="toggle-submenu"></span></li>
-											<li class="menu-item"><a title="Hot Sale" href="ColumnQueryAll.jsp"
-												class="teamo-menu-item-title">專欄管理</a></li>
+											<li class="menu-item"><a title="Hot Sale"
+												href="ColumnQueryAll.jsp" class="teamo-menu-item-title">專欄管理</a></li>
 											<li class="menu-item"><a title="Variegated"
 												href="OrderServlet" class="teamo-menu-item-title">訂單管理</a></li>
 										</ul>
@@ -190,12 +190,11 @@ function myFunction(){
 							<div class="container-wapper">
 								<ul class="teamo-clone-mobile-menu teamo-nav main-menu "
 									id="menu-main-menu">
-									<li><a href="CourseServlet1" class="teamo-menu-item-title"
+									<li><a href="CourseServlet" class="teamo-menu-item-title"
 										title="Home">課程</a><span class="toggle-submenu"></span>
-									<li class="menu-item "><a
-										href="Exam.jsp" class="teamo-menu-item-title"
-										title="Shop">試卷</a><span class="toggle-submenu"></span>
-										
+									<li class="menu-item "><a href="Exam.jsp"
+										class="teamo-menu-item-title" title="Shop">試卷</a><span
+										class="toggle-submenu"></span>
 									<li><a href="Activity" class="teamo-menu-item-title"
 										title="Pages">活動</a><span class="toggle-submenu"></span></li>
 									<li><a href="ColumnQueryAll.jsp"
@@ -204,10 +203,10 @@ function myFunction(){
 										<ul class="submenu">
 
 										</ul></li>
-									<c:if test="${sessionScope.user.status != 3}">
-										<li class="menu-item"><a href="CartServlet"
-											class="teamo-menu-item-title" title="About">購物車</a></li>
-									</c:if>
+
+									<li class="menu-item"><a href="CartServlet"
+										class="teamo-menu-item-title" title="About">購物車</a></li>
+
 								</ul>
 							</div>
 						</div>

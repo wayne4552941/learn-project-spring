@@ -73,7 +73,7 @@
 						</tr>
 						<tr>
 
-							<td colspan="8"><a href="CourseServlet1" style="color: red"><input
+							<td colspan="8"><a href="CourseServlet" style="color: red"><input
 									type="hidden" name="return" value="前往探索更多課程~">前往探索更多課程~</a></td>
 						</tr>
 					</c:if>

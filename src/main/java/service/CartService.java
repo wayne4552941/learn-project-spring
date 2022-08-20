@@ -35,7 +35,7 @@ public class CartService {
 	}
 
 	public void cartAdd(String cartId,int id) throws SQLException{
-		CourseBean course = courseDao.selectById(WebUtils.paseInt(cartId));
+		CourseBean course = courseDao.select(WebUtils.paseInt(cartId));
 		CartItem cart = new CartItem(0, id, course.getCourse_id(), course.getCourse_name(), 1,
 				course.getCourse_price());
 		cartDaoImpt.addCart(cart);

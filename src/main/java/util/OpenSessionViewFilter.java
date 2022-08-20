@@ -16,7 +16,7 @@ import org.hibernate.SessionFactory;
 /**
  * Servlet Filter implementation class OpenSessionViewFilter
  */
-@WebFilter(urlPatterns = {"/Activity_OP","/Activity","/CartServlet","/ExamController"})
+@WebFilter(urlPatterns = {"/Activity_OP","/Activity","/CartServlet","/ExamController","/OrderServlet","/CourseServlet"})
 public class OpenSessionViewFilter extends HttpFilter implements Filter {
      
 	private Session session;
@@ -25,7 +25,7 @@ public class OpenSessionViewFilter extends HttpFilter implements Filter {
      */
     public OpenSessionViewFilter() {
         super();
-        // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub74
     }
 
 	/**

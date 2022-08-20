@@ -6,10 +6,9 @@
     <session-factory>
          
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-        <property name="hibernate.connection.password">P@ssw0rd!</property>
-        <!--
+<!--         <property name="hibernate.connection.password">P@ssw0rd!</property> -->
         <property name="hibernate.connection.password">wayne</property>
-        -->
+        
         <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=ProjectTwo;trustServerCertificate=true</property>
         <property name="hibernate.connection.username">sa</property>
          

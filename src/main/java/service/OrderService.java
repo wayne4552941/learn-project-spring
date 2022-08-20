@@ -33,7 +33,7 @@ public class OrderService {
 	CourseDao courseDao = new CourseDao();
 	static AllInOne allInOne = new AllInOne("");
 	
-	public String ecPay(String orderId,String url) {
+	public String ecPay(String orderId,String url,AioCheckOutALL obj) {
 		OrderUser orderUser = order.orderUser(orderId);	
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		String dateToStr = dateFormat.format(orderUser.getDate());
@@ -49,23 +49,22 @@ public class OrderService {
 			}
 		}
 		
-		AioCheckOutALL obj = new AioCheckOutALL();
+		
 		obj.setMerchantTradeNo(orderId+String.valueOf((int)(Math.random()*10000)));
 		obj.setMerchantTradeDate(dateToStr);
 		obj.setTotalAmount(String.valueOf((int)orderUser.getTotoalprice()));
 		obj.setTradeDesc("test Description");
-		//obj.setReturnURL("http://211.23.128.214:5000");
-		obj.setReturnURL("http://localhost:8080/learn-project/OrderServlet?command=UPDATE&status=1&orderID="+orderId);
+		obj.setReturnURL("http://211.23.128.214:5000");
+		System.out.println(obj.getReturnURL()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		//obj.setReturnURL("http://localhost:8080/learn-project/OrderServlet?command=UPDATE&status=1&orderID="+orderId);
 		//obj.setOrderResultURL(url+"?command=UPDATE&status=1&orderID="+orderId);
 		obj.setNeedExtraPaidInfo("N");
 		obj.setItemName(itemName);
-		
+		obj.getPaymentInfoURL();
 		obj.getReturnURL();
-		System.out.println(obj.getReturnURL()+"*******************************************************");
-		
+		System.out.println(obj.getPaymentInfoURL()+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		obj.setClientBackURL(url+"?command=UPDATE&status=1&orderID="+orderId);
 		String form = allInOne.aioCheckOut(obj, null);
-		System.out.println(form);
 		return form;
 	}
 	public static boolean cmprChkMacValue() {

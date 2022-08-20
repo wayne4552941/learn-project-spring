@@ -75,10 +75,13 @@ public class OrderServlet extends HttpServlet {
 		String orderID = request.getParameter("orderID");
 		String url =request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 		+ request.getContextPath() + request.getServletPath();
-		String form = orderService.ecPay(orderID, url);
+		AioCheckOutALL obj = new AioCheckOutALL();
+		request.getSession().setAttribute("check", obj);
+		String form = orderService.ecPay(orderID, url,obj);
 		request.setAttribute("ecpay", form);
 		request.getRequestDispatcher("/ecpay.jsp").forward(request, response);
-		
+		AioCheckOutALL objj = (AioCheckOutALL)request.getSession().getAttribute("check");
+		System.out.println(objj.getPaymentInfoURL()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 	
 	private void searchLearn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -125,6 +128,12 @@ public class OrderServlet extends HttpServlet {
 		String orderID = request.getParameter("orderID");
 		orderService.updateOrder(user.getStatus(), status, orderID);
 		orderList(request, response);
+		AioCheckOutALL objj = (AioCheckOutALL)request.getSession().getAttribute("check");
+		
+		System.out.println(objj.getReturnURL()+"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+		System.out.println(objj.getItemName()+"QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ");
+		System.out.println(objj.getClientRedirectURL()+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println(objj.getPaymentInfoURL()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 
 	private void addOrder(HttpServletRequest request, HttpServletResponse response)

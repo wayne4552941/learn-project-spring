@@ -2,11 +2,14 @@ package bean;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,15 +28,20 @@ public class CartItem implements Serializable{
 	@Column(name = "id")
 	private int id;
 	private int user_id;
-	private int item_id;
+//	@Transient
+//	private int item_id;
 	private String itemName;
 	private int count ;
 	private double price;
 	
+	@OneToOne
+	@JoinColumn(name = "item_id")
+	private CourseBean courseBean;
+	
 	public CartItem(int id, int user_id, int item_id, String itemName, int count,double price) {
 		this.id = id;
 		this.user_id = user_id;
-		this.item_id = item_id;
+		//this.item_id = item_id;
 		this.itemName = itemName;
 		this.count = count;
 		this.price = price;
@@ -48,13 +56,26 @@ public class CartItem implements Serializable{
 		this.email = email;
 		this.id = id;
 		this.user_id = user_id;
-		this.item_id = item_id;
+		//this.item_id = item_id;
 		this.itemName = itemName;
 		this.count = count;
 		this.price = price;
 	}
 
 
+
+	public CartItem( int id, int user_id, String itemName, int count,
+			double price, CourseBean courseBean) {
+		super();
+		this.id = id;
+		this.user_id = user_id;
+		this.itemName = itemName;
+		this.count = count;
+		this.price = price;
+		this.courseBean = courseBean;
+	}
+
+	
 
 	public int getId() {
 		return id;
@@ -82,13 +103,13 @@ public class CartItem implements Serializable{
 		this.user_id = user_id;
 	}
 
-	public int getItem_id() {
-		return item_id;
-	}
-
-	public void setItem_id(int item_id) {
-		this.item_id = item_id;
-	}
+//	public int getItem_id() {
+//		return item_id;
+//	}
+//
+//	public void setItem_id(int item_id) {
+//		this.item_id = item_id;
+//	}
 
 	
 	public int getCount() {
@@ -155,10 +176,26 @@ public class CartItem implements Serializable{
 
 
 
+	
+
+
 	@Override
 	public String toString() {
-		return "CartDto [user_id=" + user_id + ", item_id=" + item_id + ", itemName=" + itemName + ", count=" + count
-				+ ", price=" + price + "]";
+		return "CartItem [account=" + account + ", name=" + name + ", email=" + email + ", id=" + id + ", user_id="
+				+ user_id + ", itemName=" + itemName + ", count=" + count + ", price=" + price + ", courseBean="
+				+ courseBean + "]";
+	}
+
+
+
+	public CourseBean getCourseBean() {
+		return courseBean;
+	}
+
+
+
+	public void setCourseBean(CourseBean courseBean) {
+		this.courseBean = courseBean;
 	}
 	
 	

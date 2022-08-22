@@ -1,5 +1,8 @@
 package bean;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,13 +11,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Columns;
 
 @Entity
 @Table(name = "course")
-public class CourseBean {
+public class CourseBean implements Serializable{
 
 	@Id
 	@Column(name = "course_id")
@@ -33,6 +39,11 @@ public class CourseBean {
 	private String lecturer_email;
 	private String course_picture;
 	
+	
+	@Transient
+	private CartItem cartItem;
+	
+	
 //	@ManyToOne(fetch = FetchType.EAGER)
 //	@JoinColumn(name = "education_id")
 //	private Education education;
@@ -42,6 +53,7 @@ public class CourseBean {
 //	private Subject subject;
 
 	public CourseBean() {
+		
 	}
 
 	public CourseBean(int course_id, int user_id, int subject_id, int education_id, String course_name,
@@ -184,6 +196,14 @@ public class CourseBean {
 //	public void setSubject(Subject subject) {
 //		this.subject = subject;
 //	}
+
+	public CartItem getCartItem() {
+		return cartItem;
+	}
+
+	public void setCartItem(CartItem cartItem) {
+		this.cartItem = cartItem;
+	}
 
 	@Override
 	public String toString() {

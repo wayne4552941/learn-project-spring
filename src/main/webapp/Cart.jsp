@@ -41,14 +41,14 @@
 						</c:url>
 						<tr>
 							<c:forEach var="cou" items="${course}">
-								<c:if test="${cart.item_id == cou.course_id}">
+								<c:if test="${cart.courseBean.course_id == cou.course_id}">
 									<td><img src="${cou.course_picture }" alt="" title=""
 										width="150" height="100"></td>
 								</c:if>
 							</c:forEach>
 							<td style="vertical-align:middle;">${cart.itemName}</td>
 							<c:forEach var="cou" items="${course}">
-								<c:if test="${cart.item_id == cou.course_id}">
+								<c:if test="${cart.courseBean.course_id == cou.course_id}">
 									<td style="vertical-align:middle;"><c:choose>
 											<c:when test="${cou.subject_id == 1}">數學</c:when>
 											<c:when test="${cou.subject_id == 2}">英文</c:when>
@@ -59,7 +59,7 @@
 									<td style="vertical-align:middle;">${cou.enrollment }</td>
 								</c:if>
 							</c:forEach>
-							<td style="vertical-align:middle;">$${cart.price}</td>
+							<td style="vertical-align:middle;">$${cart.courseBean.course_price}</td>
 
 							<td class="product-remove" style="vertical-align:middle;"><a href="${tempLink}"
 								class="remove"></a></td>

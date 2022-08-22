@@ -134,6 +134,7 @@ public class CartServlet extends HttpServlet {
 			throws ServletException, IOException {
 		MemberBean user = (MemberBean) request.getSession().getAttribute("user");
 		List<CartItem> cartList = cartService.cartList(user.getUser_id());
+		System.out.println(cartList);
 		request.setAttribute("cartList", cartList);
 		List countPriceTotal = cartService.getCountPriceTotal(cartList);
 		request.setAttribute("countTotal", countPriceTotal);

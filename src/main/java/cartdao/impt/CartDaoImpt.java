@@ -1,5 +1,7 @@
 package cartdao.impt;
 
+import static org.junit.Assume.assumeNoException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +42,9 @@ public class CartDaoImpt extends BaseDAO<CartItem> implements CartDAO {
 	public void addCart(CartItem cart) {
 		Session session = factory.getCurrentSession();
 		try {
+			CourseBean courseBean = session.get(CourseBean.class, cart.getCourseBean().getCourse_id());
+			cart.setCourseBean(courseBean);
+			cart.setPrice(courseBean.getCourse_price());
 			session.save(cart);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +82,7 @@ public class CartDaoImpt extends BaseDAO<CartItem> implements CartDAO {
 		double price = 0;
 		for(CartItem item : cart) {
 			count += item.getCount();
-			price += item.getPrice();
+			price += item.getCourseBean().getCourse_price();
 		}
 		list.add(price);
 		list.add(count);

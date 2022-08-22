@@ -38,6 +38,7 @@ public class CartService {
 		CourseBean course = courseDao.select(WebUtils.paseInt(cartId));
 		CartItem cart = new CartItem(0, id, course.getCourse_id(), course.getCourse_name(), 1,
 				course.getCourse_price());
+		cart.setCourseBean(course);
 		cartDaoImpt.addCart(cart);
 	}
 

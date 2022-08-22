@@ -32,10 +32,10 @@ public class OrderItemDaoImpt extends BaseDAO<OrderItem> implements OrderItemDAO
 			for(CartItem item : cart) {
 				OrderItem orderItem = new OrderItem();
 				orderItem.setOrder_id(orderID);
-				orderItem.setItem_id(item.getItem_id());
+				orderItem.setItem_id(item.getCourseBean().getCourse_id());
 				orderItem.setName(item.getItemName());
 				orderItem.setCount(item.getCount());
-				orderItem.setPrice(item.getPrice());
+				orderItem.setPrice(item.getCourseBean().getCourse_price());
 				orderItem.setOrderUser(orderUser);
 				session.save(orderItem);
 				orderUser.addorderItems(orderItem);

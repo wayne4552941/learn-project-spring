@@ -8,8 +8,9 @@
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 		<!--   
         <property name="hibernate.connection.password">wayne</property>
-      -->
       <property name="hibernate.connection.password">P@ssw0rd!</property> 
+      -->
+      <property name="hibernate.connection.password">s3163552</property> 
         
         <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=ProjectTwo;trustServerCertificate=true</property>
         <property name="hibernate.connection.username">sa</property>
@@ -45,6 +46,7 @@
         <mapping class="bean.EduBean"/>
         <mapping class="bean.SubBean"/>
         <mapping class="bean.ExamBean"/>
+        <mapping class="bean.ColumnBean"/>
     
         
     </session-factory>

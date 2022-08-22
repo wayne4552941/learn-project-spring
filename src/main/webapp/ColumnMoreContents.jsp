@@ -11,22 +11,17 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>文章內容</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 <style>
-.st1{
-width:900px;
-margin:auto;
-}
 
 </style>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
-<form class="st1" action="ColumnServlet" method="post" >
+<form action="ColumnServlet" method="post" >
 		
 			<table>
-			<jsp:useBean id="col"  scope="session" class="bean.Column"  />
+			<jsp:useBean id="col"  scope="session" class="bean.ColumnBean"  />
 			<td   class="st1">
 				<label for="" class="t1">文章編號:</label>
 				<jsp:getProperty name="col" property="no"/>

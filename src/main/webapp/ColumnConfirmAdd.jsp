@@ -11,7 +11,6 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ConfirmAdd</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 <style>
 </style>
 </head>
@@ -24,7 +23,7 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 			<table>
 				<td class="st1"><label for="" class="t1">發佈時間:</label> <%=request.getParameter("publish_time")%>
 				</td>
-				<td class="st1"><label for="account1" class="t1">使用者編號:</label>
+				<td class="st1"><label for="account1" class="t1">使用者編號:</label >
 					<%=request.getParameter("user_id")%></td>
 
 				<td class="st1"><label for="pwd1" class="t1">作者:</label> <%=request.getParameter("author")%>

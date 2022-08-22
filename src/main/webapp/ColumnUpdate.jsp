@@ -11,22 +11,16 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Update</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 <style>
 .write {
 	border: 3px dotted black
-}	
-.st1{
-width:500px;
-margin:auto;
 }
-
 </style>
 
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<form action="ColumnServlet" method="post">
+	<form action="ColumnServlet" method="get">
 		<fieldset>
 			<legend>修改專欄</legend>
 			
@@ -56,10 +50,9 @@ margin:auto;
 				<label for="" class="t1">權限:</label> <input class="st2" type="text"
 					name="role" value="<%=request.getParameter("role")%>"> <br>
 			</div>
-			<div class="st1">
 			<br> <label class="t1">內容:</label>
 			<textarea class="write" cols="10" rows="10" name="contents"><%=request.getParameter("contents")%></textarea>
-			</div>
+
 		</fieldset>
 		<center>
 			<div class="sub">

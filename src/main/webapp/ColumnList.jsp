@@ -12,7 +12,6 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 <title>Column List</title>
 </head>
 <body>

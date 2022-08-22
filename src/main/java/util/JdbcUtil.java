@@ -25,9 +25,10 @@ public class JdbcUtil {
 	
 	static {
 		try {
-		
+			
+			FileInputStream in = new FileInputStream("D:\\webgit\\teamproject\\learn-project\\src\\main\\java\\druid.properties");
 			//InputStream is = JdbcUtil.class.getClassLoader().getSystemResourceAsStream("druid.properties");   //ClassLoader.getSystemResourceAsStream("druid.properties");
-			FileInputStream in = new FileInputStream("C:\\Users\\ASUS\\Desktop\\WayneCode\\JAVA\\JAVAworkspace\\learn-project\\druid.properties");
+//			FileInputStream in = new FileInputStream("C:\\Users\\ASUS\\Desktop\\WayneCode\\JAVA\\JAVAworkspace\\learn-project\\druid.properties");
 //			FileInputStream in = new FileInputStream("C:\\Users\\ACER\\Desktop\\github\\learn-project\\src\\main\\java\\druid.properties");
 //			FileInputStream in = new FileInputStream("D:/github/learn-project/src/main/java/druid.properties");
 			//FileInputStream in = new FileInputStream("druid.properties");

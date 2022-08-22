@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="bean.MemberBean"%>
 <%@ page import="dao.AdminDao"%>
-<%@ page import="service.AdminServlet"%>
+
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 					<th>ID</th>
 					<th>暱稱</th>
 					<th>帳號</th>
-					<th>密碼</th>
+					<!-- <th>密碼</th> -->
 					<th>身分</th>
 					<th>姓名</th>
 					<th>大頭貼</th>
@@ -51,7 +51,7 @@
 						<td><c:out value="${mb.user_id}" /></td>
 						<td><c:out value="${mb.nick}" /></td>
 						<td><c:out value="${mb.account}" /></td>
-						<td><c:out value="${mb.password}" /></td>
+						<!-- <td><c:out value="${mb.password}" /></td> -->
 						<td><c:choose>
 								<c:when test="${mb.status==1}">
              		 						學生

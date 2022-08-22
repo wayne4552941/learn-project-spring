@@ -100,6 +100,7 @@ public class AdminServlet extends HttpServlet {
 		
 		MemberBean memberBean = new MemberBean(user_id, nick, account, password, status, name, img, sex, birthday,
 				cellphone, email, joinDate);
+		memberBean.setImg("img/" + memberBean.getImg());
 		System.out.println("updateservlet:"+memberBean);
 		service.updateUser(memberBean);
 		request.getRequestDispatcher("/AdminServlet?action=list").forward(request, response);
@@ -119,7 +120,7 @@ public class AdminServlet extends HttpServlet {
 		MemberBean memberBean = new MemberBean();
 		try {
 			BeanUtils.populate(memberBean, request.getParameterMap());
-			memberBean.setImg("images/" + memberBean.getImg());
+			memberBean.setImg("img/" + memberBean.getImg());
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

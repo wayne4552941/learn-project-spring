@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.*,bean.*"%>
 <!DOCTYPE html>
 <%
 response.setContentType("text/html;charset=UTF-8");
@@ -13,22 +11,22 @@ response.setDateHeader("Expires", -1); // Prevents caching at the proxy server
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 <style>
-.st1{
+.divform{
 width:500px;
 margin:auto;
 }
 </style>
+
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-<c:if test="${sessionScope.user == null}"><% request.getRequestDispatcher("/Login.jsp").forward(request, response); %></c:if>
-	<form action="ColumnServlet" method="get" enctype="multipart/form-data">
+	<form action="ColumnServlet" method="get" >
+				<input type="hidden" name="add" value="add">
 		<fieldset>
-		
-			<legend class="st1">新增專欄</legend>
-			<div class="st1">
+		<div class=" divform">
+			<div class="st1 ">
+			<legend>新增專欄</legend>
 				<label for="" class="t1">發佈時間:</label> <input type="date"
 					name="publish_time">
 			</div>
@@ -50,18 +48,19 @@ margin:auto;
 				</select>
 
 			</div>
-			<div class="st1">
+			<div width="50px"; height="50px"; class="st1">
 				<label class="t1">內容:</label>
-				<textarea cols="10" rows="10" type="text" name="contents">
+				<textarea cols="5" rows="5"  type="text" name="contents">
 			</textarea>
 			</div>
 		</fieldset>
 		<center>
 			<div class="sub">
-				<input type="submit" name="add" value="送出"> <input
+				<input type="submit"  value="送出"> <input
 					type="submit" name="backToQuery" value="返回">
 			</div>
 		</center>
+		</div>
 
 
 	</form>

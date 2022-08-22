@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Column Management</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 </head>
 <body>
 	<center>

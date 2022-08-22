@@ -16,7 +16,7 @@ import org.hibernate.SessionFactory;
 /**
  * Servlet Filter implementation class OpenSessionViewFilter
  */
-@WebFilter(urlPatterns = {"/Activity_OP","/Activity","/CartServlet","/ExamController","/OrderServlet","/CourseServlet","/AdminServlet","/Loginservlet","/RegisterServlet"})
+@WebFilter(urlPatterns = {"/Activity_OP","/Activity","/CartServlet","/ExamController","/OrderServlet","/CourseServlet","/AdminServlet","/Loginservlet","/RegisterServlet","/ColumnServlet","/ColumnQueryAll.jsp"})
 public class OpenSessionViewFilter extends HttpFilter implements Filter {
      
 	private Session session;

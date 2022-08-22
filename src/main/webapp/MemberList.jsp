@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="bean.MemberBean"%>
 <%@ page import="dao.AdminDao"%>
-<%@ page import="service.AdminServlet"%>
+
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>

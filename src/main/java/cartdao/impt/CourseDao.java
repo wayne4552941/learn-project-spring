@@ -83,9 +83,6 @@ public class CourseDao implements CourseDAOInterface {
 		CourseBean courseBean = session.get(CourseBean.class, course_id);
 
 		if (courseBean != null) {
-			String hql = "delete from CartItem where item_id = :id";
-			session.createQuery(hql)
-			.setParameter("id", course_id).executeUpdate();
 			session.delete(courseBean);
 			return true;
 		}

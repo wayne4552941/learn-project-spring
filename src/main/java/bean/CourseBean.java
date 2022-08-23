@@ -1,6 +1,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,8 +41,8 @@ public class CourseBean implements Serializable{
 	private String course_picture;
 	
 	
-	@Transient
-	private CartItem cartItem;
+	@OneToMany(mappedBy = "courseBean",cascade = CascadeType.ALL)
+	private List<CartItem> carts;
 	
 	
 //	@ManyToOne(fetch = FetchType.EAGER)
@@ -197,12 +198,15 @@ public class CourseBean implements Serializable{
 //		this.subject = subject;
 //	}
 
-	public CartItem getCartItem() {
-		return cartItem;
+	
+	
+	
+	public List<CartItem> getCarts() {
+		return carts;
 	}
 
-	public void setCartItem(CartItem cartItem) {
-		this.cartItem = cartItem;
+	public void setCarts(List<CartItem> carts) {
+		this.carts = carts;
 	}
 
 	@Override

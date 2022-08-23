@@ -40,7 +40,8 @@ public class OrderDaoImpt extends BaseDAO<OrderUser> implements OrderDAO {
 				count += item.getCount();
 				price += item.getCourseBean().getCourse_price();
 			}
-			MemberBean memberBean = session.get(MemberBean.class, cart.get(0).getUser_id());
+			MemberBean memberBean = session.get(MemberBean.class, cart.get(0).getMemberBean().getUser_id());
+			
 			OrderUser order = new OrderUser();
 			Date date = new Date();
 			String orderID = String.valueOf(date.getTime() + String.valueOf(cart.get(0).getUser_id()));

@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 
 import bean.CartItem;
 import bean.CourseBean;
+import bean.MemberBean;
 import cartdao.BaseDAO;
 import cartdao.CartDAO;
 import util.HibernateUtil;
@@ -43,7 +44,9 @@ public class CartDaoImpt extends BaseDAO<CartItem> implements CartDAO {
 		Session session = factory.getCurrentSession();
 		try {
 			CourseBean courseBean = session.get(CourseBean.class, cart.getCourseBean().getCourse_id());
+			MemberBean memberBean = session.get(MemberBean.class, cart.getUser_id());
 			cart.setCourseBean(courseBean);
+			cart.setMemberBean(memberBean);
 			cart.setPrice(courseBean.getCourse_price());
 			session.save(cart);
 		} catch (Exception e) {

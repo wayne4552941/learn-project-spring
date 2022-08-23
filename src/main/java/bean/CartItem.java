@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -27,6 +28,7 @@ public class CartItem implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+	@Transient
 	private int user_id;
 //	@Transient
 //	private int item_id;
@@ -37,6 +39,10 @@ public class CartItem implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "item_id")
 	private CourseBean courseBean;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private MemberBean memberBean;
 	
 	public CartItem(int id, int user_id, int item_id, String itemName, int count,double price) {
 		this.id = id;
@@ -175,15 +181,12 @@ public class CartItem implements Serializable{
 	}
 
 
-
 	
-
-
 	@Override
 	public String toString() {
-		return "CartItem [account=" + account + ", name=" + name + ", email=" + email + ", id=" + id + ", user_id="
-				+ user_id + ", itemName=" + itemName + ", count=" + count + ", price=" + price + ", courseBean="
-				+ courseBean + "]";
+		return "CartItem [account=" + account + ", name=" + name + ", email=" + email + ", id=" + id + ", itemName="
+				+ itemName + ", count=" + count + ", price=" + price + ", courseBean=" + courseBean + ", memberBean="
+				+ memberBean + "]";
 	}
 
 
@@ -196,6 +199,18 @@ public class CartItem implements Serializable{
 
 	public void setCourseBean(CourseBean courseBean) {
 		this.courseBean = courseBean;
+	}
+
+
+
+	public MemberBean getMemberBean() {
+		return memberBean;
+	}
+
+
+
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
 	}
 	
 	

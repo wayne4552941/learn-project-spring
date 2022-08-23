@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -59,13 +60,10 @@ public class MemberBean {
 			 CascadeType.DETACH, CascadeType.REFRESH})
 	List<OrderUser> orderUsers;
 
-	@Override
-	public String toString() {
-		return "MemberBean [user_id=" + user_id + ", nick=" + nick + ", account=" + account + ", password=" + password
-				+ ", status=" + status + ", name=" + name + ", img=" + img + ", sex=" + sex + ", birthday=" + birthday
-				+ ", cellphone=" + cellphone + ", email=" + email + ", joinDate=" + joinDate + "]";
-	}
-
+	@OneToMany(mappedBy = "memberBean",cascade = CascadeType.ALL)
+	private List<CartItem> cartItems;
+	
+	
 	public MemberBean(Integer user_id, String nick, String account, String password, int status, String name,
 			String img, String sex, String birthday, String cellphone, String email, String joinDate) {
 		super();
@@ -202,4 +200,21 @@ public class MemberBean {
 		
 		orderUsers.add(orderUser);
 	}
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberBean [user_id=" + user_id + ", nick=" + nick + ", account=" + account + ", password=" + password
+				+ ", status=" + status + ", name=" + name + ", img=" + img + ", sex=" + sex + ", birthday=" + birthday
+				+ ", cellphone=" + cellphone + ", email=" + email + ", joinDate=" + joinDate + "]";
+	}
+	
+	
 }

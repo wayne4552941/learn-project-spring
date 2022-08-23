@@ -14,11 +14,22 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<c:if test="${sessionScope.user == null}"><% request.getRequestDispatcher("/Login.jsp").forward(request, response); %></c:if>
+	<c:if test="${sessionScope.user == null}"><%
+	request.getRequestDispatcher("/Login.jsp").forward(request, response);
+	%></c:if>
 	<br>
-	<a href="AddNewUser.jsp">新增會員</a>
-	<hr>
 	<div>
+	<a href="AddNewUser.jsp">新增會員</a>
+	</div>
+	
+	<div>
+	<form action="AdminServlet?action=queryAccount" method="post">
+			<label> 帳號查詢 : <input type="text" name="keyword">
+			</label> <input type="submit" name="query" value="查詢"><p>${errorMsgMap.QueryError}</p>
+		</form>
+	</div>
+	<hr>
+	
 		<div>
 			<h3>會員清單</h3>
 		</div>
@@ -64,7 +75,7 @@
        							</c:otherwise>
 							</c:choose></td>
 						<td><c:out value="${mb.name}" /></td>
-						<td><img src="${mb.img}" width="150" height="100""></td>
+						<td><img src="${mb.img}" width="150" height="100"></td>
 						<td><c:out value="${mb.sex}" /></td>
 						<td><c:out value="${mb.birthday}" /></td>
 						<td><c:out value="${mb.cellphone}" /></td>
@@ -79,6 +90,6 @@
 
 				</tbody>
 			</c:forEach>
-			</div>
+	 
 </body>
 </html>

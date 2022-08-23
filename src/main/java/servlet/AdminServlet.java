@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -37,6 +38,9 @@ public class AdminServlet extends HttpServlet {
 		System.out.println("執行:" + action);
 		try {
 			switch (action) {
+			case "queryAccount":
+				queryAccount(request, response);
+				break;
 			case "new":
 				showNewForm(request, response);
 				break;
@@ -59,6 +63,26 @@ public class AdminServlet extends HttpServlet {
 		} catch (Exception e) {
 
 		}
+	}
+
+	private void queryAccount(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HashMap<String, String> errorMsgMap = new HashMap<String, String>();
+		request.setAttribute("errorMsgMap", errorMsgMap);
+		String selectMember = request.getParameter("keyword");
+		List<MemberBean> list = service.QueryUserByAccount(selectMember);
+		System.out.println("list:" + list);
+
+		if (list.isEmpty()) {
+			errorMsgMap.put("QueryError", "<font color=red size=4 >查無此帳號!!</font>");
+			request.getRequestDispatcher("AdminServlet?action=list").forward(request, response);
+
+		} else {
+			request.setAttribute("queryResult", list);
+			request.getRequestDispatcher("QueryMemberByAccount.jsp").forward(request, response);
+			
+		}
+
 	}
 
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
@@ -97,11 +121,11 @@ public class AdminServlet extends HttpServlet {
 		String cellphone = request.getParameter("cellphone");
 		String email = request.getParameter("email");
 		String joinDate = request.getParameter("joinDate");
-		
+
 		MemberBean memberBean = new MemberBean(user_id, nick, account, password, status, name, img, sex, birthday,
 				cellphone, email, joinDate);
 		memberBean.setImg("img/" + memberBean.getImg());
-		System.out.println("updateservlet:"+memberBean);
+		System.out.println("updateservlet:" + memberBean);
 		service.updateUser(memberBean);
 		request.getRequestDispatcher("/AdminServlet?action=list").forward(request, response);
 	}

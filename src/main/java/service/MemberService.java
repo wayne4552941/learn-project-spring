@@ -45,5 +45,9 @@ public class MemberService {
 		
 	}
 
+	public List<MemberBean> QueryUserByAccount(String account) {
+		return mDao.QueryUserByAccount(account);
+	}
+
 	
 }

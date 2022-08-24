@@ -103,4 +103,13 @@ public class MemberDao {
 		return memberBean;
 
 	}
+
+	//透過帳號查詢(list)
+	public List<MemberBean> QueryUserByAccount(String account) {
+		Session session = factory.getCurrentSession();
+		Query<MemberBean> queryAccount=session.createQuery("from MemberBean where account like :account",MemberBean.class)
+			   .setParameter("account",  "%"+account+ "%");
+		return queryAccount.list();
+		
+	}
 }

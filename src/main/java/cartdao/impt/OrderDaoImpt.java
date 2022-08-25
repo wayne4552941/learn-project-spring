@@ -121,6 +121,7 @@ public class OrderDaoImpt extends BaseDAO<OrderUser> implements OrderDAO {
 	public List<OrderUser> orderSearch(String search) {
 		Session session = factory.getCurrentSession();
 		try {
+			System.out.println(search);
 			List<OrderUser> resultList = session.createQuery("from OrderUser o where o.memberBean.account like :a or o.memberBean.name like :n or o.order_id like :o",OrderUser.class)
 			.setParameter("a", search)
 			.setParameter("n", search)

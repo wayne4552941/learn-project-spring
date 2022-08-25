@@ -57,6 +57,8 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
 		MemberBean user = (MemberBean) request.getSession().getAttribute("user");
 		if (user != null) {
 			System.out.println("會員在購物車");

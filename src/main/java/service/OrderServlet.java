@@ -164,6 +164,7 @@ public class OrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		MemberBean user =(MemberBean)request.getSession().getAttribute("user");
 		if(user == null) {

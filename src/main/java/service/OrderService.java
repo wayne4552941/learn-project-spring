@@ -25,7 +25,7 @@ import ecpay.payment.integration.domain.AioCheckOutALL;
 import mail.JavaMail;
 import util.WebUtils;
 
-public class OrderService {
+public class OrderService  implements OrderServiceInterface{
 
 	OrderDaoImpt order = new OrderDaoImpt();
 	CartDaoImpt cartDaoImpt = new CartDaoImpt();
@@ -33,6 +33,7 @@ public class OrderService {
 	CourseDao courseDao = new CourseDao();
 	static AllInOne allInOne = new AllInOne("");
 
+	@Override
 	public String ecPay(String orderId, String url, AioCheckOutALL obj) {
 		OrderUser orderUser = order.orderUser(orderId);
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -73,12 +74,14 @@ public class OrderService {
 		dict.put("CheckMacValue", "50BE3989953C1734E32DD18EB23698241E035F9CBCAC74371CCCF09E0E15BD61");
 		return allInOne.compareCheckMacValue(dict);
 	}
-
+	
+	@Override
 	public List<CourseBean> searchLearn(int id) throws SQLException {
 		List<CourseBean> queryUserItem = order.queryUserItem(id);
 		return queryUserItem;
 	}
 
+	@Override
 	public List<OrderUser> orderSearch(String search) {
 		search = "%" + search.trim() + "%";
 		List<OrderUser> orderSearch = order.orderSearch(search);
@@ -87,21 +90,25 @@ public class OrderService {
 		}
 		return orderSearch;
 	}
-
+	
+	@Override
 	public List<OrderItem> orderItemList(String cartId) {
 		List<OrderItem> orderItemList = orderItem.orderItemList(cartId);
 		return orderItemList;
 	}
-
+	
+	@Override
 	public OrderUser orderItemUser(String id) {
 		OrderUser orderUser = order.orderUser(id);
 		return orderUser;
 	}
 
+	@Override
 	public void deleteOrder(String id) {
 		order.deleteOrder(id);
 	}
 
+	@Override
 	public void updateOrder(int userStatus, String status, String orderId) throws SQLException {
 		OrderUser orderUser = order.orderUser(orderId);
 		orderUser.setStatus(WebUtils.paseInt(status));
@@ -126,12 +133,14 @@ public class OrderService {
 
 	}
 
+	@Override
 	public void addOrder(int id) {
 		List<CartItem> carList = cartDaoImpt.carList(id);
 		order.addOrder(carList);
 		cartDaoImpt.clearCard(id);
 	}
 
+	@Override
 	public List<OrderUser> orderList(int id, int status) {
 		List<OrderUser> orderList = null;
 		if (status != 3) {

@@ -79,24 +79,5 @@ public class OrderItemDaoImpt extends BaseDAO<OrderItem> implements OrderItemDAO
 			e.printStackTrace();
 		}
 	  }
-//	public void updateEnrollment(int enrollment,int id) {
-//		// String sql = "update course set user_id = ? set subject_id = ? set education_id = ? set course_name = ? set course_introduction = ? set course_price = ? set course_duration = ?"
-//		//	+ "set enrollment = ? set course_date = ? set lecturer_name = ? set lecturer_email = ? set course_picture = ? where course_id = ?";
-//		String sql = "update course set enrollment = ?  where course_id = ?";
-//		int result = 0;
-//		try {
-//			conn = JdbcUtil.getConnection();
-//			update(sql, enrollment,id);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				JdbcUtil.closeConnection(conn);
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//	}
+
 }

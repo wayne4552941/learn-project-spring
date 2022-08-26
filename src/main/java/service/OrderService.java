@@ -25,7 +25,7 @@ import ecpay.payment.integration.domain.AioCheckOutALL;
 import mail.JavaMail;
 import util.WebUtils;
 
-public class OrderService  implements OrderServiceInterface{
+public class OrderService implements OrderServiceInterface {
 
 	OrderDaoImpt order = new OrderDaoImpt();
 	CartDaoImpt cartDaoImpt = new CartDaoImpt();
@@ -74,7 +74,7 @@ public class OrderService  implements OrderServiceInterface{
 		dict.put("CheckMacValue", "50BE3989953C1734E32DD18EB23698241E035F9CBCAC74371CCCF09E0E15BD61");
 		return allInOne.compareCheckMacValue(dict);
 	}
-	
+
 	@Override
 	public List<CourseBean> searchLearn(int id) throws SQLException {
 		List<CourseBean> queryUserItem = order.queryUserItem(id);
@@ -90,13 +90,13 @@ public class OrderService  implements OrderServiceInterface{
 		}
 		return orderSearch;
 	}
-	
+
 	@Override
 	public List<OrderItem> orderItemList(String cartId) {
 		List<OrderItem> orderItemList = orderItem.orderItemList(cartId);
 		return orderItemList;
 	}
-	
+
 	@Override
 	public OrderUser orderItemUser(String id) {
 		OrderUser orderUser = order.orderUser(id);
@@ -113,23 +113,24 @@ public class OrderService  implements OrderServiceInterface{
 		OrderUser orderUser = order.orderUser(orderId);
 		orderUser.setStatus(WebUtils.paseInt(status));
 		order.updateOrder(orderUser);
-		
-		if("2".equalsIgnoreCase(status)) {
+
+		if ("2".equalsIgnoreCase(status)) {
 			List<Integer> orderItemIDList = orderItem.orderItemIDList(orderId);
 			for (Integer item : orderItemIDList) {
 				CourseBean courseBean = courseDao.select(item);
 				orderItem.updateEnrollment(courseBean.getEnrollment() + 1, courseBean.getCourse_id());
 			}
-		}
+		} else {
 
-		String txt = "<h2>" + "訂單編號: " + orderUser.getOrder_id() + "<br>" + "訂單生成日期: " + orderUser.getDate() + "<br>"
-				+ "購買人姓名: " + orderUser.getMemberBean().getName() + "<br>" + "購買人信箱: "
-				+ orderUser.getMemberBean().getEmail() + "<br>" + "總金額: " + orderUser.getTotoalprice() + "<h2>";
-		JavaMail javaMail = new JavaMail();
-		javaMail.setCustomer("ggyy45529441@gmail.com");
-		javaMail.setSubject("好學生-EEIT49 線上付款成功!");
-		javaMail.setTxt(txt);
-		javaMail.sendMail();
+			String txt = "<h2>" + "訂單編號: " + orderUser.getOrder_id() + "<br>" + "訂單生成日期: " + orderUser.getDate()
+					+ "<br>" + "購買人姓名: " + orderUser.getMemberBean().getName() + "<br>" + "購買人信箱: "
+					+ orderUser.getMemberBean().getEmail() + "<br>" + "總金額: " + orderUser.getTotoalprice() + "<h2>";
+			JavaMail javaMail = new JavaMail();
+			javaMail.setCustomer("ggyy45529441@gmail.com");
+			javaMail.setSubject("好學生-EEIT49 線上付款成功!");
+			javaMail.setTxt(txt);
+			javaMail.sendMail();
+		}
 
 	}
 

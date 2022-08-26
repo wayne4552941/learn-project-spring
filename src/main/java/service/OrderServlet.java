@@ -33,7 +33,7 @@ import cartdao.impt.OrderItemDaoImpt;
 import ecpay.payment.integration.AllInOne;
 import ecpay.payment.integration.domain.AioCheckOutALL;
 import mail.JavaMail;
-import memberbean.User;
+
 import util.WebUtils;
 
 /**

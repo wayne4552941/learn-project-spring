@@ -22,7 +22,7 @@ import bean.CartItem;
 import bean.CourseBean;
 import bean.MemberBean;
 import dao.*;
-import memberbean.User;
+
 import cartdao.impt.CartDaoImpt;
 import cartdao.impt.CourseDao;
 import util.WebUtils;

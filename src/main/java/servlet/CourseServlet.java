@@ -1,8 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -42,6 +44,7 @@ public class CourseServlet extends HttpServlet {
 		response.setDateHeader("Expires", -1);
 		String action = request.getParameter("action");
 		System.out.println(action);
+
 		if (action == null) {
 			action = "1";
 		}
@@ -76,7 +79,6 @@ public class CourseServlet extends HttpServlet {
 	private void listCourse(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		CourseService service = new CourseService();
 		List<CourseBean> list = service.selectAll();
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/List.jsp").forward(request, response);
@@ -103,9 +105,6 @@ public class CourseServlet extends HttpServlet {
 
 	private void detailsCourse(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
 		CourseBean cbean = service.select(Integer.parseInt(request.getParameter("course_id")));
 		request.setAttribute("cbean", cbean);
 		request.getRequestDispatcher("Details.jsp").forward(request, response);
@@ -114,47 +113,66 @@ public class CourseServlet extends HttpServlet {
 
 	private void queryId(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		int course_id = Integer.parseInt(request.getParameter("keyword"));
-		CourseBean cb = service.select(course_id);
+		HashMap<String, String> errorMsgMap = new HashMap<String, String>();
+		request.setAttribute("errorMsgMap", errorMsgMap);
+//		int course_id = Integer.parseInt(request.getParameter("keyword"));
+//		CourseBean cb = service.select(course_id);
+		String course_id = request.getParameter("keyword");
+		if(course_id == "") {
+			course_id = "0";
+		};
+		CourseBean cb = service.select(Integer.parseInt(course_id));
+		if (cb != null) {
+			request.setAttribute("queryId", cb);
+			request.getRequestDispatcher("QueryId.jsp").forward(request, response);
+		} else {
+			if(cb == null || course_id == "0") {
+				errorMsgMap.put("QueryError", "<font color=red size=5>查無資料!!</font>");
+//			request.getRequestDispatcher("QueryFailed.jsp").forward(request, response);	
+			}
+		
+};
+		if (!errorMsgMap.isEmpty()) {
+			listCourse(request, response);
+		};
 		System.out.println(cb.getCourse_id());
-		request.setAttribute("queryId", cb);
-		request.getRequestDispatcher("QueryId.jsp").forward(request, response);
 
 	}
 
 	private void queryName(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
+		HashMap<String, String> errorMsgMap = new HashMap<String, String>();
+		request.setAttribute("errorMsgMap", errorMsgMap);
 		String course_name = request.getParameter("keyword");
 		List<CourseBean> list = service.selectName(course_name);
-		request.setAttribute("queryResult", list);
-		request.getRequestDispatcher("Query.jsp").forward(request, response);
+		if(course_name == "") {
+			listCourse(request, response);
+		}
+		if (!list.isEmpty()) {
+			request.setAttribute("queryResult", list);
+			request.getRequestDispatcher("Query.jsp").forward(request, response);
+		} else {
+				errorMsgMap.put("QueryError", "<font color=red size=5>查無資料!!</font>");
+//			request.getRequestDispatcher("QueryFailed.jsp").forward(request, response);
+			
+		}
+		if (!errorMsgMap.isEmpty()) {
+			listCourse(request, response);
+		}
 
 	}
 
 	protected void showUpdateDetails(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
 		System.out.println(request.getParameter("course_id"));
 		CourseBean bean = service.select(Integer.parseInt(request.getParameter("course_id")));
 		request.setAttribute("bean", bean);
 		request.getRequestDispatcher("Update.jsp").forward(request, response);
 
 	}
-	
+
 	protected void updateSubmit(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
-
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
 		int subject_id = Integer.parseInt(request.getParameter("subject_id"));
 		int education_id = Integer.parseInt(request.getParameter("education_id"));
@@ -176,11 +194,12 @@ public class CourseServlet extends HttpServlet {
 
 	private void deleteCourse(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// request.setCharacterEncoding("UTF-8");
 		String parameter = request.getParameter("course_id");
-		System.out.println(parameter);
+		System.out.println("delete:" + parameter);
 		Integer.parseInt(parameter);
 		service.deleteOne(Integer.parseInt(parameter));
+		System.out.println(service.deleteOne(Integer.parseInt(parameter)));
+		System.out.println("刪除完畢");
 		listCourse(request, response);
 
 	}

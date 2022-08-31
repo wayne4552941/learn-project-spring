@@ -3,7 +3,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="bean.CourseBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <style>
 .tb{
    	border-collapse: collapse;
-   	width: 1500px; 	
+   	width: 1000px; 	
    	/*自動斷行*/
    	word-wrap: break-word;
    	table-layout: fixed;
@@ -20,24 +20,26 @@
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="BackendHeader.jsp"/>
+<jsp:include page="Style.jsp"/>
+<br><br><br>
 <center><h2>查詢結果</h2></center>
 <table class='tb' align='center' border='1' cellspacing='0'>
 
-		    <td>課程編號</td>
+		     <td>課程編號</td>
 		    <td>課程圖片</td>
 			<td>課程名稱</td>
-			<td>課程簡述</td>
+<!-- 			<td>課程簡述</td> -->
 			<td>課程時長</td>
 			<td>課程價格</td>
 			<td>已購買人數</td>
 			<td>上架日期</td>
 			<td>講師姓名</td>
+			<td>課程資訊</td>
 			
 		</tr>
 		<%
          CourseBean courseBean = (CourseBean) request.getAttribute("queryId");
-		 //CourseBean courseBean = CourseDao.selectById(int course_id);
           %>
 		
 		<tr>
@@ -45,12 +47,17 @@
 			<td><h4><center><%=courseBean.getCourse_id() %></center></h4></td>
 		    <td><img src="<%=courseBean.getCourse_picture() %>"alt="" title="" width="250" height="200"></td>
 			<td><%=courseBean.getCourse_name() %></td>
-			<td><%=courseBean.getCourse_introduction() %></td>
+<%-- 			<td><%=courseBean.getCourse_introduction() %></td> --%>
 			<td><%=courseBean.getCourse_duration() %></td>
 			<td><center><%=courseBean.getCourse_price() %></center></td>
 			<td><center><%=courseBean.getEnrollment() %></td>
 			<td><%=courseBean.getCourse_date() %></center></td>
 			<td><center><%=courseBean.getLecturer_name() %></center></td>
+			<td>
+				<%--request.setAttribute("bean", courseBean); --%> <a
+				href="CourseServlet?action=details&course_id=<%=courseBean.getCourse_id()%>"><input
+					type="submit" name="details" value="查看詳情"></a>
+			</td>
 		</tr>
 
 	

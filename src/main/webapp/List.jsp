@@ -12,13 +12,14 @@
 <link rel="shortcut icon" type="image/x-icon"
 	href="images/smalllogo.png" />
 <style>
-.tb {
-	border-collapse: collapse;
-	width: 1500px;
-	/*自動斷行*/
-	word-wrap: break-word;
-	table-layout: fixed;
-}
+.tb { 
+ 	border-collapse: collapse;  
+  	margin-left:285px; 
+	width: 1230px;
+ 	/*自動斷行*/ 
+ 	word-wrap: break-word;
+  	table-layout: fixed;  
+ } 
 
 .bt {
 	background-color: red;
@@ -28,23 +29,25 @@
 
 </head>
 <body>
-	<jsp:include page="header.jsp" />
-
-	<div align="right">
+	<jsp:include page="BackendHeader.jsp" />
+	<jsp:include page="Style.jsp"/>
+<br><br><br><br>
+	<div align="center">
 		<form action="CourseServlet?action=queryName" method="post">
-			<label> 課程名稱 : <input type="text" name="keyword">
-			</label> <input type="submit" name="query" value="查詢">
-		</form>
+			<label> 課程名稱 : <input type="text" name="keyword" size="7">
+ 			</label> <input type="submit" name="query" value="查詢">
+ 		</form>
 		<form action="CourseServlet?action=queryId" method="post">
-			<label> 課程編號 : <input type="text" name="keyword"></label> <input
+		<label> 課程編號 : <input type="text" name="keyword" size="7"></label> <input
 				type="submit" name="query" value="查詢">
 		</form>
-
-
+		<div>
+			<p>${errorMsgMap.QueryError}</p>
+		</div>
 
 	</div>
 
-	<table class=tb align='center' border='1'>
+	<table class=tb border='1'>
 		<tr>
 			<td align="center">課程編號</td>
 			<td align="center">課程圖片</td>
@@ -68,7 +71,7 @@
 					<center><%=courseBean.getCourse_id()%></center>
 				</h4></td>
 			<td><img src="<%=courseBean.getCourse_picture()%>" alt=""
-				title="" width="250" height="200"></td>
+				title="" width="150" height="150"></td>
 			<td><%=courseBean.getCourse_name()%></td>
 			<td><%=courseBean.getCourse_duration()%></td>
 			<td><center><%=courseBean.getCourse_price()%></center></td>

@@ -11,10 +11,12 @@ response.setContentType("text/html;charset=UTF-8");
 <link rel="shortcut icon" type="image/x-icon" href="assets/images/smalllogo.png" />
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="BackendHeader.jsp"/>
+<jsp:include page="Style.jsp"/>
 <script>
 alert("新增課程成功");
 </script>
+<br><br><br><br><br><br>
 <h1><center>新增成功!!</center></h1>
 <center><a href="CourseServlet1"><input type="submit" name="return" value="返回課程列表"></a></center>
 

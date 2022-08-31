@@ -27,8 +27,10 @@ integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeM
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="BackendHeader.jsp"/>
+<jsp:include page="Style.jsp"/>
 <a href="CourseServlet"><input type="submit" name="return" value="回上頁"></a>
+<br><br><br>
 <center>
 <h1>課程資料</h1>
 </center>

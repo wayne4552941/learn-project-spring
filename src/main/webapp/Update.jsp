@@ -26,7 +26,9 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="BackendHeader.jsp"/>
+<jsp:include page="Style.jsp"/>
+<br><br><br>
 <a href="CourseServlet"><input type="submit" name="return" value="回上頁"></a>
 <center>
 <h1>課程資料修改</h1>

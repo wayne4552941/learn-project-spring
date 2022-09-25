@@ -7,22 +7,23 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import bean.CartItem;
 import bean.CourseBean;
 import bean.MemberBean;
-import cartdao.BaseDAO;
 import cartdao.CartDAO;
-import util.HibernateUtil;
 
 
-
-public class CartDaoImpt extends BaseDAO<CartItem> implements CartDAO {
+@Repository
+public class CartDaoImpt  implements CartDAO {
 	
-	SessionFactory factory = null;
+	@Autowired
+	SessionFactory factory ;
 	
 	public CartDaoImpt() {
-		factory = HibernateUtil.getFactory();
+		//factory = HibernateUtil.getFactory();
 	}
 	
 	@Override

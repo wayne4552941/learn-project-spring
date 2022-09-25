@@ -5,22 +5,21 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import bean.CartItem;
 import bean.CourseBean;
 import bean.OrderItem;
 import bean.OrderUser;
-import cartdao.BaseDAO;
 import cartdao.OrderItemDAO;
-import util.HibernateUtil;
 
-public class OrderItemDaoImpt extends BaseDAO<OrderItem> implements OrderItemDAO {
+public class OrderItemDaoImpt  implements OrderItemDAO {
 
-
+	@Autowired
 	SessionFactory factory = null;
 	
 	public OrderItemDaoImpt() {
-		factory = HibernateUtil.getFactory();
+		//factory = HibernateUtil.getFactory();
 	}
 	
 	@Override

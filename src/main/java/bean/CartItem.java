@@ -14,8 +14,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name = "Cart")
+@Component
 public class CartItem implements Serializable{
 	
 	@Transient
@@ -43,6 +47,11 @@ public class CartItem implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private MemberBean memberBean;
+	
+	public CartItem() {
+		
+	}
+	
 	
 	public CartItem(int id, int user_id, int item_id, String itemName, int count,double price) {
 		this.id = id;
@@ -95,9 +104,6 @@ public class CartItem implements Serializable{
 
 
 
-	public CartItem() {
-		
-	}
 	
 	
 

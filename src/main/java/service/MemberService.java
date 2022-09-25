@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import bean.MemberBean;
@@ -13,7 +14,7 @@ public class MemberService {
 		this.mDao=new MemberDao();
 	}
 
-	public MemberBean checkLogin(String loginAccount, String loginPassword) {
+	public MemberBean checkLogin(String loginAccount, String loginPassword) throws SQLException {
 		return mDao.queryAccountAndPassword(loginAccount, loginPassword);
 	}
 

@@ -8,24 +8,24 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import bean.CartItem;
 import bean.CourseBean;
 import bean.MemberBean;
 import bean.OrderItem;
 import bean.OrderUser;
-import cartdao.BaseDAO;
 
 import cartdao.impt.*;
-import util.HibernateUtil;
 import cartdao.OrderDAO;
 
-public class OrderDaoImpt extends BaseDAO<OrderUser> implements OrderDAO {
+public class OrderDaoImpt implements OrderDAO {
 	
+	@Autowired
 	SessionFactory factory = null;
 	
 	public OrderDaoImpt() {
-		factory = HibernateUtil.getFactory();
+		//factory = HibernateUtil.getFactory();
 	}
 	
 	OrderItemDaoImpt daoImpt = new OrderItemDaoImpt();

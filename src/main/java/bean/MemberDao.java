@@ -1,27 +1,41 @@
 package bean;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.DataSource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import util.HibernateUtil;
-
+@Repository
 public class MemberDao {
 
+	@Autowired
 	private SessionFactory factory;
-
+	
+	@Autowired
+	CartItem cartItem;
+	
+	@Autowired
+	DataSource dataSource;
 	public MemberDao() {
-		this.factory = HibernateUtil.getFactory();
+		//this.factory = HibernateUtil.getFactory();
 	}
 
-	public MemberBean queryAccountAndPassword(String account, String password) {
-		Session session = factory.getCurrentSession();
-
-		String hql = "from MemberBean m where m.account = :account and m.password = :password";
-
+	public MemberBean queryAccountAndPassword(String account, String password) throws SQLException {
+		System.out.println(cartItem);
 		try {
+			Connection connection = dataSource.getConnection();
+			System.out.println(connection);
+			Session session = factory.openSession();
+			
+			String hql = "from MemberBean m where m.account = :account and m.password = :password";
 			MemberBean result = session.createQuery(hql, MemberBean.class).setParameter("account", account)
 					.setParameter("password", password).getSingleResult();
 			return result;

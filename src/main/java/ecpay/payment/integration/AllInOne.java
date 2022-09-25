@@ -564,9 +564,7 @@ public class AllInOne extends AllInOneBase{
 		String name[] = key.toArray(new String[key.size()]);
 		builder.append("<form id=\"allPayAPIForm\" action=\""+ aioCheckOutUrl + "\" method=\"post\">");
 		for(int i = 0 ; i < name.length ; i++) {
-			//System.out.println(fieldValue.get(name[i]) + "&");
 			builder.append("<input type=\"hidden\" name=\""+name[i]+"\" value=\""+fieldValue.get(name[i])+"\">");
-			//builder.append("<input type=\"hidden\" name=\""+name[i]+"\" value=\""+fieldValue.get(name[i])+"%23"+"\">");
 		}
 		builder.append("<script language=\"JavaScript\">");
 		builder.append("allPayAPIForm.submit()");

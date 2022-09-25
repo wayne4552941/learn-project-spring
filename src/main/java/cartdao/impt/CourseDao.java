@@ -5,17 +5,19 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import bean.CourseBean;
 import cartdao.CourseDAOInterface;
-import util.HibernateUtil;
+//import util.HibernateUtil;
 
 public class CourseDao implements CourseDAOInterface {
 
+	@Autowired
 	private SessionFactory factory;
 
 	public CourseDao() {
-		this.factory = HibernateUtil.getFactory();
+		//this.factory = HibernateUtil.getFactory();
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -40,7 +41,13 @@ public class LoginServlet extends HttpServlet {
 
 		MemberService service = new MemberService();
 
-		MemberBean result = service.checkLogin(account, password);
+		MemberBean result=null;
+		try {
+			result = service.checkLogin(account, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Integer status = null ;
 		if (result != null) {
 			HttpSession session = request.getSession();
